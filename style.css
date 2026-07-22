@@ -71,6 +71,7 @@ body {
   background: #e9ecef;
   border-radius: 20px;
 }
+
 .slidebar-divider {
   height: 1px;
   background: #ddd;
@@ -196,4 +197,88 @@ body {
   margin-bottom: 5px;
   margin-top: 15px;
 }
+
+.topbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 50px;
+  background: #eee;
+  border-bottom: 4px solid #0b7285;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  z-index: 40;
+}
+.topbar .brand {
+  font-weight: 700;
+  font-size: 20px;
+}
+.topbar .user-greet {
+  color: #333;
+}
+
+.sidebar { 
+  top: 50px; 
+  height: calc(100% - 50px);
+ }
+.content { 
+  margin-left: 220px; 
+  padding: 80px 20px 40px 20px;
+ }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 20px;
+  align-items: start;
+}
+.main-column { }
+.right-column { 
+  display:flex; 
+  flex-direction: 
+  column; gap: 16px; }
+
+.student-details { 
+  background: #efefef; 
+  padding: 22px; 
+  border: 1px solid #ddd; }
+.student-details h2 { 
+  margin-bottom: 12px; 
+  font-weight: 600;
+ }
+.details-lines {
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 26px, #d0d0d0 27px);
+  height: 420px;
+}
+
+.student-image { 
+  height: 180px; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
+ }
+
+.other-details { 
+  height: 220px;
+ }
+
+.footer {
+  margin-top: 26px;
+  background: #e9e9e9;
+  padding: 12px 16px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+
+.content {
+  transition: padding-left 0.15s 
+  ease; 
+}
+
+
+
 

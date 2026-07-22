@@ -7,8 +7,43 @@
     <title>Profile</title>
 </head>
 <body>
-    <h1>Profile</h1>
-    <p>This is your profile page.</p>
-    <a href="dash.html">Back to Home</a>
+    <header class="topbar">
+        <div class="brand">StackHub</div>
+        <div class="user-greet">Hello, Student</div>
+    </header>
+
+     <div class="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="dash.html">Dashboard</a></li>
+            <li class="active"><a href="profile.html">Profiles</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <div class="sidebar-divider"></div>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <main class="content">
+        <div class="content-grid">
+            <section class="main-column">
+                <div class="student-details">
+                    <h2>Student Details</h2>
+                    <div class="details-lines">
+                    </div>
+                </div>
+            </section>
+
+            <aside class="right-column">
+                <div class="student-image info-card">
+                    <h3>Student Image</h3>
+                </div>
+                <div class="other-details info-card">
+                    <h3>Other Details</h3>
+                </div>
+            </aside>
+        </div>
+
+        <footer class="footer">Footer</footer>
+    </main>
 </body>
 </html>
