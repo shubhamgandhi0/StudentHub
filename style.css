@@ -253,7 +253,6 @@ body {
   gap: 20px;
   align-items: start;
 }
-.main-column { }
 .right-column { 
   display:flex; 
   flex-direction: 
