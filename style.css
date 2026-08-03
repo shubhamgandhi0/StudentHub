@@ -174,8 +174,7 @@ body {
 }
 
 .link-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 16px;
   margin-top: 16px;
 }
