@@ -226,7 +226,6 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 18px;
-  z-index: 40;
 }
 .topbar .brand {
   font-weight: 700;
@@ -316,17 +315,15 @@ body {
   margin-top: 60px;
   background: #eceded;
   color: #0b0b0b;
-  margin-left: 220px;
-  width: calc(100% - 220px);
+  margin-left: 200px;
 }
 
 .footer-container {
-  width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin-left: 30px;
   padding: 50px 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 35px;
 }
 
@@ -339,6 +336,7 @@ body {
   color: #070707;
   line-height: 1.8;
   font-size: 15px;
+  margin-right: 12px;
 }
 
 .footer-section ul {
@@ -353,16 +351,13 @@ body {
 .footer-section ul li a {
   color: #070707;
   text-decoration: none;
-  transition: 0.3s;
 }
 
 .footer-section ul li a:hover {
-  color: #0b0b0b;
-  padding-left: 5px;
+  color: #0b7285;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   padding: 18px;
   color: #020202;
