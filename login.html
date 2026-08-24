@@ -7,14 +7,12 @@
     <title>StackHub - Login</title>
 </head>
 <body>
-        <div class="login">
-    <h1>
-        StackHub
-    </h1>
-    <input type="text" placeholder="Username" required><br><br>
-    <input type="password" placeholder="Password" required><br><br>
-    <button class="primary-btn" onclick="login()">Login</button><br><br>
-    <a href="reg.html">Don't have an account? Register</a>
+    <div class="login">
+    <h1>StackHub</h1>
+    <input type="text" id="loginUname" placeholder="Username"><br><br>
+    <input type="password" id="loginPass" placeholder="Password"><br><br>
+    <button type="button" class="primary-btn" onclick="vlogin()">Login</button>
+    <div id="loginErrmsg" style="color: red; margin-bottom: 10px;"></div>
     </div>
     <script src="script.js"></script>
 </body>
