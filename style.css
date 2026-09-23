@@ -727,6 +727,23 @@ body[data-theme="dark"] .footer-bottom {
   color: #d8e3e1;
 }
 
+body[data-theme="dark"] .student-details {
+  background: #252e30;
+  border-color: #3b484a;
+  color: #f1f5f4;
+}
+
+body[data-theme="dark"] .student-info strong,
+body[data-theme="dark"] .student-info-grid strong {
+  color: #8fe0d2;
+}
+
+body[data-theme="dark"] .student-info-grid p,
+body[data-theme="dark"] .other-details p,
+body[data-theme="dark"] .other-details h3 {
+  color: #c3cecf;
+}
+
 @media (max-width: 760px) {
   .topbar {
     height: 58px;
