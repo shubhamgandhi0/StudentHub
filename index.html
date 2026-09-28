@@ -62,6 +62,7 @@
                 <a href="attendance.html">Attendance</a>
                 <a href="timetable.html">Timetable</a>
                 <a href="assignments.html">Assignments</a>
+                <a href="events.html">Events</a>
             </div>
         </section>
 
@@ -91,25 +92,12 @@
             <div class="faq-panel">
                 <p class="eyebrow">Need to know</p>
                 <h2>Frequently asked questions</h2>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" aria-expanded="false">What can I manage in StackHub?<span>+</span></button>
-                        <p class="faq-answer">You can review attendance, timetable details, assignments, and support links from one workspace.</p>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" aria-expanded="false">Does StackHub remember my theme?<span>+</span></button>
-                        <p class="faq-answer">Yes. Your light or dark theme preference is saved in this browser and restored on your next visit.</p>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" aria-expanded="false">How do I get started?<span>+</span></button>
-                        <p class="faq-answer">Register a student account, then use the dashboard links to open your daily tools.</p>
-                    </div>
-                </div>
+                <div id="faq-list" class="faq-list" aria-live="polite"><p class="data-status">Loading FAQs...</p></div>
             </div>
         </section>
 
-        <section class="notice-banner" role="status">
-            <div><strong>New semester resources are live.</strong><span>Check your dashboard for updated study materials.</span></div>
+        <section class="notice-banner" role="status" aria-labelledby="notice-title">
+            <div><strong id="notice-title">Loading notices...</strong><span id="notice-message"></span></div>
             <button class="banner-close icon-btn" type="button" aria-label="Dismiss notification">&times;</button>
         </section>
 

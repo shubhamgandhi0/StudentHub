@@ -1,0 +1,17 @@
+[
+{"title":"Freshers Welcome Meet","category":"Campus","date":"2026-07-06","location":"Main Auditorium","description":"Meet faculty members and discover student clubs."},
+{"title":"Web Development Workshop","category":"Workshop","date":"2026-07-09","location":"Lab 2","description":"Build a responsive page with HTML, CSS, and JavaScript."},
+{"title":"Inter-College Chess Tournament","category":"Sports","date":"2026-07-12","location":"Sports Hall","description":"Represent StackHub in the annual chess tournament."},
+{"title":"Career Planning Seminar","category":"Career","date":"2026-07-15","location":"Seminar Room","description":"Learn how to prepare for internships and placements."},
+{"title":"Library Orientation","category":"Academic","date":"2026-07-18","location":"Central Library","description":"Explore digital journals, borrowing rules, and study zones."},
+{"title":"Coding Club Hack Night","category":"Workshop","date":"2026-07-22","location":"Innovation Lab","description":"Collaborate on a small project with the coding club."},
+{"title":"Independence Day Rehearsal","category":"Campus","date":"2026-07-25","location":"College Ground","description":"Join the performers and volunteers for rehearsal."},
+{"title":"Alumni Networking Evening","category":"Career","date":"2026-07-29","location":"Conference Hall","description":"Connect with alumni working in technology and design."},
+{"title":"Healthy Campus Drive","category":"Campus","date":"2026-08-02","location":"Student Plaza","description":"Take part in a campus wellness and cleanliness drive."},
+{"title":"Photography Walk","category":"Clubs","date":"2026-08-06","location":"North Gate","description":"Capture campus life with the photography club."},
+{"title":"Data Structures Quiz","category":"Academic","date":"2026-08-10","location":"Room 104","description":"Test your understanding of common data structures."},
+{"title":"Open Mic Afternoon","category":"Clubs","date":"2026-08-14","location":"Amphitheatre","description":"Share music, poetry, comedy, or storytelling."},
+{"title":"Research Showcase","category":"Academic","date":"2026-08-18","location":"Exhibition Hall","description":"See student projects and undergraduate research presentations."},
+{"title":"Basketball Tryouts","category":"Sports","date":"2026-08-22","location":"Basketball Court","description":"Trials are open to all currently enrolled students."},
+{"title":"Mental Health Awareness Talk","category":"Wellness","date":"2026-08-26","location":"Seminar Room","description":"A counsellor discusses practical strategies for student wellbeing."}
+]

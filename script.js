@@ -139,3 +139,124 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (event) => { if (event.key === "Escape" && modal && !modal.hidden) closeModal(); });
     document.querySelector(".banner-close")?.addEventListener("click", (event) => event.currentTarget.closest(".notice-banner").remove());
 });
+
+const eventSearch = document.getElementById("event-search");
+if (eventSearch) {
+    const eventState = { records: [], page: 1, pageSize: 6 };
+    const eventFilter = document.getElementById("event-filter");
+    const eventSort = document.getElementById("event-sort");
+    const eventList = document.getElementById("events-list");
+    const displayDate = (date) => new Date(`${date}T00:00:00`).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+
+    const eventCard = (event) => {
+        const card = document.createElement("article");
+        card.className = "data-card";
+        const title = document.createElement("h3");
+        title.textContent = event.title;
+        card.append(title);
+        [["Category", event.category], ["Date", displayDate(event.date)], ["Location", event.location], ["Details", event.description]].forEach(([label, value]) => {
+            const line = document.createElement("p");
+            const strong = document.createElement("strong");
+            strong.textContent = `${label}: `;
+            line.append(strong, document.createTextNode(value));
+            card.append(line);
+        });
+        return card;
+    };
+
+    const renderEvents = () => {
+        const query = eventSearch.value.trim().toLowerCase();
+        const filtered = eventState.records.filter((event) => Object.values(event).some((value) => String(value).toLowerCase().includes(query)) && (!eventFilter.value || event.category === eventFilter.value));
+        filtered.sort((first, second) => {
+            if (eventSort.value === "date-asc") return first.date.localeCompare(second.date);
+            if (eventSort.value === "date-desc") return second.date.localeCompare(first.date);
+            return eventSort.value === "title-asc" ? first.title.localeCompare(second.title) : second.title.localeCompare(first.title);
+        });
+        const pages = Math.max(1, Math.ceil(filtered.length / eventState.pageSize));
+        eventState.page = Math.min(eventState.page, pages);
+        const start = (eventState.page - 1) * eventState.pageSize;
+        eventList.replaceChildren(...filtered.slice(start, start + eventState.pageSize).map(eventCard));
+        document.getElementById("events-count").textContent = `${filtered.length} of ${eventState.records.length} events`;
+        document.getElementById("events-page").textContent = `Page ${eventState.page} of ${pages}`;
+        document.getElementById("events-status").textContent = filtered.length ? "Events loaded successfully." : "No events match your search.";
+        document.getElementById("events-previous").disabled = eventState.page === 1;
+        document.getElementById("events-next").disabled = eventState.page === pages;
+    };
+
+    fetch("events.json").then((response) => { if (!response.ok) throw new Error("Events could not be loaded"); return response.json(); }).then((events) => {
+        eventState.records = events;
+        const categories = [...new Set(events.map((event) => event.category))].sort();
+        eventFilter.replaceChildren(new Option("All categories", ""), ...categories.map((category) => new Option(category, category)));
+        renderEvents();
+    }).catch((error) => { document.getElementById("events-status").textContent = "Unable to load events. Please start the site with a local server."; console.error(error); });
+
+    [eventSearch, eventFilter, eventSort].forEach((control) => control.addEventListener("input", () => { eventState.page = 1; renderEvents(); }));
+    document.getElementById("events-previous").addEventListener("click", () => { eventState.page -= 1; renderEvents(); });
+    document.getElementById("events-next").addEventListener("click", () => { eventState.page += 1; renderEvents(); });
+}
+
+const faqList = document.getElementById("faq-list");
+if (faqList) {
+    const noticeTitle = document.getElementById("notice-title");
+    const noticeMessage = document.getElementById("notice-message");
+    const renderFaq = (faq) => {
+        const item = document.createElement("div");
+        item.className = "faq-item";
+        const question = document.createElement("button");
+        question.className = "faq-question";
+        question.type = "button";
+        question.setAttribute("aria-expanded", "false");
+        question.append(document.createTextNode(faq.question));
+        const indicator = document.createElement("span");
+        indicator.textContent = "+";
+        question.append(indicator);
+        const answer = document.createElement("p");
+        answer.className = "faq-answer";
+        answer.textContent = faq.answer;
+        question.addEventListener("click", () => {
+            const expanded = question.getAttribute("aria-expanded") === "true";
+            question.setAttribute("aria-expanded", String(!expanded));
+            item.classList.toggle("is-open", !expanded);
+        });
+        item.append(question, answer);
+        return item;
+    };
+
+    Promise.all([fetch("faqs.json"), fetch("notices.json")]).then(async ([faqResponse, noticeResponse]) => {
+        if (!faqResponse.ok || !noticeResponse.ok) throw new Error("Home data could not be loaded");
+        const [faqs, notices] = await Promise.all([faqResponse.json(), noticeResponse.json()]);
+        faqList.replaceChildren(...faqs.slice(0, 5).map(renderFaq));
+        noticeTitle.textContent = notices[0].title;
+        noticeMessage.textContent = notices[0].message;
+    }).catch((error) => {
+        faqList.replaceChildren(Object.assign(document.createElement("p"), { className: "data-status", textContent: "FAQs are temporarily unavailable." }));
+        noticeTitle.textContent = "Notices are temporarily unavailable.";
+        console.error(error);
+    });
+}
+
+const studentPrimary = document.getElementById("student-primary");
+if (studentPrimary) {
+    const profileFields = {
+        "student-primary": [["Name", "name"], ["Roll No", "rollNo"], ["Date of Birth", "dob"], ["Class", "course"], ["Address", "address"], ["Blood Group", "bloodGroup"]],
+        "student-secondary": [["Email", "email"], ["Phone", "phone"], ["Father's Name", "fatherName"], ["Father's Occupation", "fatherOccupation"], ["Mother's Name", "motherName"], ["Emergency Contact", "emergencyContact"], ["Extra-Curricular Activities", "activities"], ["Achievements", "achievements"], ["Hobbies", "hobbies"], ["Languages Known", "languages"]]
+    };
+    const renderProfileFields = (target, student, fields) => target.replaceChildren(...fields.map(([label, key]) => {
+        const paragraph = document.createElement("p");
+        const strong = document.createElement("strong");
+        strong.textContent = `${label}: `;
+        paragraph.append(strong, document.createTextNode(student[key]));
+        return paragraph;
+    }));
+
+    fetch("students.json").then((response) => { if (!response.ok) throw new Error("Profile data could not be loaded"); return response.json(); }).then((students) => {
+        const student = students[0];
+        renderProfileFields(studentPrimary, student, profileFields["student-primary"]);
+        renderProfileFields(document.getElementById("student-secondary"), student, profileFields["student-secondary"]);
+        document.getElementById("student-academic").replaceChildren(...["Previous School: Parul University", "Year of Admission: 2026", "Current Year: 2nd Year", "Current Semester: 3rd Semester"].map((text) => {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = text;
+            return paragraph;
+        }));
+    }).catch((error) => { studentPrimary.textContent = "Unable to load profile data."; console.error(error); });
+}

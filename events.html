@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>StackHub - Events</title>
+</head>
+<body>
+    <header class="topbar"><div class="brand">StackHub</div><div class="user-greet">Campus Events</div></header>
+    <div class="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="dash.html">Dashboard</a></li>
+            <li><a href="profile.html">Profiles</a></li>
+            <li class="active"><a href="events.html">Events</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <div class="sidebar-divider"></div><li><a href="index.html">Logout</a></li>
+        </ul>
+    </div>
+    <main class="content">
+        <section class="hero-card"><p class="eyebrow">Campus calendar</p><h1>Upcoming Events</h1><p>Find workshops, seminars, clubs, and activities happening around campus.</p></section>
+        <section class="events-panel" aria-labelledby="events-heading">
+            <div class="section-heading"><div><p class="eyebrow">Dynamic JSON data</p><h2 id="events-heading">Event directory</h2></div><span id="events-count" class="record-count">Loading...</span></div>
+            <div class="events-controls">
+                <label for="event-search">Search<input id="event-search" type="search" placeholder="Search events..."></label>
+                <label for="event-filter">Category<select id="event-filter"></select></label>
+                <label for="event-sort">Sort<select id="event-sort"><option value="date-asc">Date: earliest first</option><option value="date-desc">Date: latest first</option><option value="title-asc">Title: A to Z</option><option value="title-desc">Title: Z to A</option></select></label>
+            </div>
+            <p id="events-status" class="data-status" role="status">Loading events...</p>
+            <div id="events-list" class="data-list"></div>
+            <nav class="pagination" aria-label="Event pages"><button id="events-previous" class="secondary-btn" type="button">Previous</button><span id="events-page">Page 1</span><button id="events-next" class="primary-btn" type="button">Next</button></nav>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

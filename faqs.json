@@ -1,0 +1,17 @@
+[
+{"question":"What can I manage in StackHub?","answer":"You can review attendance, timetable details, assignments, events, and support links from one workspace.","category":"General"},
+{"question":"How do I register?","answer":"Open the Register page, complete the form, and submit your details.","category":"Account"},
+{"question":"Can I view my timetable online?","answer":"Yes. Use the Timetable link from the dashboard to view your weekly schedule.","category":"Academics"},
+{"question":"Where can I check attendance?","answer":"The Attendance page contains your subject-wise attendance information.","category":"Academics"},
+{"question":"How are assignments displayed?","answer":"Assignments can be reviewed from the Assignments page with their deadlines.","category":"Academics"},
+{"question":"Can I change my theme?","answer":"Use the theme button in the top bar. Your choice is saved in this browser.","category":"Account"},
+{"question":"How do I contact support?","answer":"Visit Contact Us to find the StackHub support details.","category":"Support"},
+{"question":"What is the Events page?","answer":"It shows campus activities loaded from external JSON data.","category":"Events"},
+{"question":"Can I search events?","answer":"Yes. Enter a keyword in the event search field to find matching records.","category":"Events"},
+{"question":"Can I sort event results?","answer":"Use the sort menu to order events by date or title.","category":"Events"},
+{"question":"What happens if data cannot load?","answer":"The page displays an error message so the problem is clear to the user.","category":"Technical"},
+{"question":"Are the records fetched dynamically?","answer":"Yes. each page fetches and parses its JSON file when it loads.","category":"Technical"},
+{"question":"Does search ignore letter case?","answer":"Yes. Search text is normalized so uppercase and lowercase both work.","category":"Technical"},
+{"question":"How many student records are available?","answer":"The student JSON dataset contains fifteen sample profiles.","category":"Directory"},
+{"question":"Does StackHub remember my theme?","answer":"Yes. Your light or dark theme preference is saved and restored on your next visit.","category":"Account"}
+]
