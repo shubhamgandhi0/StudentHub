@@ -7,13 +7,18 @@
     <title>StackHub - Login</title>
 </head>
 <body>
-    <div class="login">
+    <main class="login auth-card">
     <h1>StackHub</h1>
-    <input type="text" id="loginUname" placeholder="Username"><br><br>
-    <input type="password" id="loginPass" placeholder="Password"><br><br>
-    <button type="button" class="primary-btn" onclick="vlogin()">Login</button>
+    <p class="auth-subtitle">Sign in to continue to your student workspace.</p>
+    <form class="auth-form" action="login.php" method="post" onsubmit="return vlogin()">
+        <input type="text" id="loginUname" name="username" placeholder="Username" aria-label="Username" autocomplete="username" maxlength="20" required>
+        <input type="password" id="loginPass" name="password" placeholder="Password" aria-label="Password" autocomplete="current-password" required>
+        <label class="remember-option"><input type="checkbox" name="remember" value="1"> Remember me</label>
+        <button type="submit" class="primary-btn">Login</button>
+    </form>
+    <a href="reg.html">Don't have an account? Register</a>
     <div id="loginErrmsg" style="color: red; margin-bottom: 10px;"></div>
-    </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

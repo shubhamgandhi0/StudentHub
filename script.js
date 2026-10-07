@@ -1,14 +1,26 @@
 function vreg() {
+    const fullName = document.getElementById("full-name").value.trim();
     const username = document.getElementById("uname").value.trim();
     const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value.trim();
+    const course = document.getElementById("course").value;
+    const year = document.getElementById("year").value;
     const password = document.getElementById("pass").value;
+    const confirmPassword = document.getElementById("confirm-pass").value;
+    const gender = document.querySelector('input[name="gender"]:checked');
+    const terms = document.getElementById("terms").checked;
     const error = document.getElementById("errmsg");
 
+    const nameRegex = /^[A-Za-z ]{2,80}$/;
     const usernameRegex = /^[A-Za-z0-9_]{3,20}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     const phoneRegex = /^\d{10}$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
+
+    if (!nameRegex.test(fullName)) {
+        error.textContent = "Name must contain 2–80 letters and spaces only.";
+        return false;
+    }
 
     if (!usernameRegex.test(username)) {
         error.textContent = "Username must be 3–20 characters and contain only letters, numbers, or _.";
@@ -25,14 +37,28 @@ function vreg() {
         return false;
     }
 
+    if (!course || !year || !gender) {
+        error.textContent = "Select a course, year, and gender.";
+        return false;
+    }
+
     if (!passwordRegex.test(password)) {
         error.textContent =
             "Password must be at least 8 characters with uppercase, lowercase, number, and special character.";
         return false;
     }
 
+    if (password !== confirmPassword) {
+        error.textContent = "Passwords do not match.";
+        return false;
+    }
+
+    if (!terms) {
+        error.textContent = "You must accept the terms and conditions.";
+        return false;
+    }
+
     error.textContent = "";
-     window.location.href = "dash.html";
     return true;
 }
 
@@ -54,12 +80,19 @@ function vlogin() {
     }
 
     error.textContent = "";
-    window.location.href = "dash.html";
     return true;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
+    document.querySelectorAll(".user-greet").forEach((greeting) => {
+        fetch("current_user.php")
+            .then((response) => response.ok ? response.json() : Promise.reject(new Error("User details unavailable")))
+            .then((user) => {
+                if (user.full_name) greeting.textContent = `Hello, ${user.full_name}`;
+            })
+            .catch(() => {});
+    });
     const topbar = document.querySelector(".topbar");
     if (topbar && !topbar.querySelector(".theme-toggle")) {
         const actions = document.createElement("div");
